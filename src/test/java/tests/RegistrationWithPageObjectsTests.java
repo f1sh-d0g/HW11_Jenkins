@@ -6,13 +6,12 @@ import pages.RegistrationPage;
 
 import static io.qameta.allure.Allure.step;
 
-
+@Tag("registrationPage")
 public class RegistrationWithPageObjectsTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
-    @Tag("registrationPage")
     void successfulRegistrationTest() {
         step("Open form", () -> {
             registrationPage.openPage()
