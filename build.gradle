@@ -26,7 +26,7 @@ allure {
 
 dependencies {
     testImplementation(
-            "com.codeborne:selenide:6.19.1",
+            "com.codeborne:selenide:$selenideVersion",
             "org.junit.jupiter:junit-jupiter:5.10.0",
             'org.slf4j:slf4j-simple:2.0.7',
 
@@ -50,8 +50,8 @@ task simple_test(type: Test) {
     }
 }
 
-task demoqa_test(type: Test) {
+task hw11test(type: Test) {
     useJUnitPlatform {
-        includeTags("demoqa")
+        includeTags("registrationPage")
     }
 }
