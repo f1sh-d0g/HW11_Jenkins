@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
+import static io.qameta.allure.Allure.step;
+
 
 public class RegistrationWithPageObjectsTests extends TestBase {
 
@@ -12,23 +14,27 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     @Test
     @Tag("registrationPage")
     void successfulRegistrationTest() {
-        registrationPage.openPage()
-                .removeBanner()
-                .setFirstName("Dmitrii")
-                .setLastName("Borovkov")
-                .setEmail("dmitry@borovkov.com")
-                .setGender("Male")
-                .setUserPhoneNumber("9269262626")
-                .setDateOfBirth("30", "July", "2008")
-                .setSubjects("Math")
-                .setHobbiesWrapper("Music")
-                .uploadPicture("brain.jpg")
-                .setAddress("The Street, 9")
-                .setState("NCR")
-                .setCity("Noida")
-                .submitForm();
+        step("Open form", () -> {
+            registrationPage.openPage()
+                    .removeBanner();
+        });
+        step("Fill form", () -> {
+            registrationPage.setFirstName("Dmitrii")
+                    .setLastName("Borovkov")
+                    .setEmail("dmitry@borovkov.com")
+                    .setGender("Male")
+                    .setUserPhoneNumber("9269262626")
+                    .setDateOfBirth("30", "July", "2008")
+                    .setSubjects("Math")
+                    .setHobbiesWrapper("Music")
+                    .uploadPicture("brain.jpg")
+                    .setAddress("The Street, 9")
+                    .setState("NCR")
+                    .setCity("Noida")
+                    .submitForm();
+        });
 
-        registrationPage.checkResult("Student Name", "Dmitrii Borovkov")
+        step("Verify results", () -> {registrationPage.checkResult("Student Name", "Dmitrii Borovkov")
                 .checkResult("Student Email", "dmitry@borovkov.com")
                 .checkResult("Gender", "Male")
                 .checkResult("Mobile", "9269262626")
@@ -37,7 +43,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .checkResult("Hobbies", "Music")
                 .checkResult("Picture", "brain.jpg")
                 .checkResult("Address", "The Street, 9")
-                .checkResult("State and City", "NCR Noida");
+                .checkResult("State and City", "NCR Noida");});
     }
 
     @Test
