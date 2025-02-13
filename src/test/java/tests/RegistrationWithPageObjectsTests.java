@@ -4,12 +4,13 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
-@Tag("registrationPage")
+
 public class RegistrationWithPageObjectsTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
+    @Tag("registrationPage")
     void successfulRegistrationTest() {
         registrationPage.openPage()
                 .removeBanner()
