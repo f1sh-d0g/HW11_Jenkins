@@ -10,7 +10,7 @@ import org.junit.jupiter.api.BeforeAll;
 public class TestBase {
         @BeforeAll
         static void setupConfiguration() {
-            Configuration.browserSize = "1920x1080";
+            Configuration.browserSize = "1920x2160";
             Configuration.baseUrl = "https://demoqa.com";
             Configuration.pageLoadStrategy = "eager";
             Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
